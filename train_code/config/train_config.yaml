@@ -1,0 +1,43 @@
+DIRECTORY:                                                                                                            
+  image_dir: /DATA/train/images
+  meta_dir: /DATA/train/train.csv
+
+TRAINER :
+  model: effnet #Linear
+  optimizer: adamw
+  learning_rate: 5.0e-4
+  loss: L1Loss
+  metric:
+    - MAE
+    - RMSE
+    - MAPE
+  n_epochs: 50
+  early_stopping_target: val_MAPE
+  early_stopping_patience: 10
+  early_stopping_mode: min
+  gpu: 0
+  seed: 42
+
+MODEL:
+  effnet:
+    encoder: efficientnet_b1_pruned.in1k
+    n_outputs: 1
+    pretrained: True
+
+DATALOADER:
+  batch_size: 8
+  num_workers: 4
+  shuffle: True
+  pin_memory: True
+  drop_last: False
+
+LOGGER:
+  wandb: False
+  logging_interval: 100
+  plot:
+    - loss
+    - MAE
+    - RMSE
+    - MAPE
+    - elapsed_time
+

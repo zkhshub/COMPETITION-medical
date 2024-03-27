@@ -1,0 +1,10 @@
+DIRECTORY:
+  image_dir: /workspace/hongik_bio_2023/05_final/02_track_surgery_time_prediction/01_data/test/images
+  meta_dir: /workspace/hongik_bio_2023/05_final/02_track_surgery_time_prediction/01_data/test/test.csv
+
+TRAIN:
+  train_serial: '20231110_144027'
+
+PREDICT:
+  seed: 42
+  gpu: 0
